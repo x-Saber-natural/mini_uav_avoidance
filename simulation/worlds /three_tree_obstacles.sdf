@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.9">
+  <world name="three_tree_obstacles">
+    <physics name="physics" type="ode">
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic"/>
+
+    <scene>
+      <grid>true</grid>
+      <ambient>0.55 0.55 0.55 1</ambient>
+      <background>0.55 0.76 0.95 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="ground_link">
+        <collision name="ground_collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>40 30</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="ground_visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>40 30</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.18 0.42 0.16 1</ambient>
+            <diffuse>0.25 0.58 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 1: a broad-leaf tree. -->
+    <model name="obstacle_1_round_tree">
+      <static>true</static>
+      <pose>-1.5 -2 0 0 0 0</pose>
+      <link name="tree">
+        <collision name="trunk_collision">
+          <pose>0 0 1.25 0 0 0</pose>
+          <geometry>
+            <cylinder><radius>0.28</radius><length>2.5</length></cylinder>
+          </geometry>
+        </collision>
+        <visual name="trunk_visual">
+          <pose>0 0 1.25 0 0 0</pose>
+          <geometry>
+            <cylinder><radius>0.28</radius><length>2.5</length></cylinder>
+          </geometry>
+          <material>
+            <ambient>0.30 0.12 0.04 1</ambient>
+            <diffuse>0.48 0.22 0.08 1</diffuse>
+          </material>
+        </visual>
+        <collision name="crown_collision">
+          <pose>0 0 3.0 0 0 0</pose>
+          <geometry><sphere><radius>1.35</radius></sphere></geometry>
+        </collision>
+        <visual name="crown_visual">
+          <pose>0 0 3.0 0 0 0</pose>
+          <geometry><sphere><radius>1.35</radius></sphere></geometry>
+          <material>
+            <ambient>0.04 0.30 0.06 1</ambient>
+            <diffuse>0.08 0.60 0.12 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 2: a layered pine tree. -->
+    <model name="obstacle_2_pine_tree">
+      <static>true</static>
+      <pose>2.5 1.8 0 0 0 0</pose>
+      <link name="tree">
+        <collision name="trunk_collision">
+          <pose>0 0 1.0 0 0 0</pose>
+          <geometry>
+            <cylinder><radius>0.25</radius><length>2.0</length></cylinder>
+          </geometry>
+        </collision>
+        <visual name="trunk_visual">
+          <pose>0 0 1.0 0 0 0</pose>
+          <geometry>
+            <cylinder><radius>0.25</radius><length>2.0</length></cylinder>
+          </geometry>
+          <material>
+            <ambient>0.28 0.10 0.03 1</ambient>
+            <diffuse>0.45 0.18 0.05 1</diffuse>
+          </material>
+        </visual>
+        <collision name="pine_lower_collision">
+          <pose>0 0 2.0 0 0 0</pose>
+          <geometry><cone><radius>1.35</radius><length>2.0</length></cone></geometry>
+        </collision>
+        <visual name="pine_lower_visual">
+          <pose>0 0 2.0 0 0 0</pose>
+          <geometry><cone><radius>1.35</radius><length>2.0</length></cone></geometry>
+          <material>
+            <ambient>0.02 0.22 0.08 1</ambient>
+            <diffuse>0.03 0.43 0.14 1</diffuse>
+          </material>
+        </visual>
+        <collision name="pine_middle_collision">
+          <pose>0 0 3.0 0 0 0</pose>
+          <geometry><cone><radius>1.05</radius><length>1.8</length></cone></geometry>
+        </collision>
+        <visual name="pine_middle_visual">
+          <pose>0 0 3.0 0 0 0</pose>
+          <geometry><cone><radius>1.05</radius><length>1.8</length></cone></geometry>
+          <material>
+            <ambient>0.02 0.26 0.09 1</ambient>
+            <diffuse>0.04 0.50 0.17 1</diffuse>
+          </material>
+        </visual>
+        <collision name="pine_top_collision">
+          <pose>0 0 3.9 0 0 0</pose>
+          <geometry><cone><radius>0.75</radius><length>1.6</length></cone></geometry>
+        </collision>
+        <visual name="pine_top_visual">
+          <pose>0 0 3.9 0 0 0</pose>
+          <geometry><cone><radius>0.75</radius><length>1.6</length></cone></geometry>
+          <material>
+            <ambient>0.02 0.30 0.10 1</ambient>
+            <diffuse>0.05 0.58 0.20 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 3: a flowering tree with a clustered crown. -->
+    <model name="obstacle_3_flowering_tree">
+      <static>true</static>
+      <pose>5.5 -1.0 0 0 0 0</pose>
+      <link name="tree">
+        <collision name="trunk_collision">
+          <pose>0 0 1.35 0 0 0</pose>
+          <geometry>
+            <cylinder><radius>0.30</radius><length>2.7</length></cylinder>
+          </geometry>
+        </collision>
+        <visual name="trunk_visual">
+          <pose>0 0 1.35 0 0 0</pose>
+          <geometry>
+            <cylinder><radius>0.30</radius><length>2.7</length></cylinder>
+          </geometry>
+          <material>
+            <ambient>0.32 0.13 0.05 1</ambient>
+            <diffuse>0.50 0.24 0.09 1</diffuse>
+          </material>
+        </visual>
+        <collision name="crown_center_collision">
+          <pose>0 0 3.15 0 0 0</pose>
+          <geometry><sphere><radius>1.05</radius></sphere></geometry>
+        </collision>
+        <visual name="crown_center_visual">
+          <pose>0 0 3.15 0 0 0</pose>
+          <geometry><sphere><radius>1.05</radius></sphere></geometry>
+          <material>
+            <ambient>0.65 0.16 0.32 1</ambient>
+            <diffuse>0.95 0.34 0.58 1</diffuse>
+          </material>
+        </visual>
+        <collision name="crown_left_collision">
+          <pose>-0.75 0 2.85 0 0 0</pose>
+          <geometry><sphere><radius>0.85</radius></sphere></geometry>
+        </collision>
+        <visual name="crown_left_visual">
+          <pose>-0.75 0 2.85 0 0 0</pose>
+          <geometry><sphere><radius>0.85</radius></sphere></geometry>
+          <material>
+            <ambient>0.72 0.22 0.40 1</ambient>
+            <diffuse>1.00 0.43 0.68 1</diffuse>
+          </material>
+        </visual>
+        <collision name="crown_right_collision">
+          <pose>0.75 0 2.85 0 0 0</pose>
+          <geometry><sphere><radius>0.85</radius></sphere></geometry>
+        </collision>
+        <visual name="crown_right_visual">
+          <pose>0.75 0 2.85 0 0 0</pose>
+          <geometry><sphere><radius>0.85</radius></sphere></geometry>
+          <material>
+            <ambient>0.72 0.22 0.40 1</ambient>
+            <diffuse>1.00 0.43 0.68 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <light name="sun" type="directional">
+      <pose>0 0 10 0 0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1.1</intensity>
+      <direction>-0.4 0.2 -0.9</direction>
+      <diffuse>0.95 0.92 0.85 1</diffuse>
+      <specular>0.30 0.30 0.30 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>47.397971057728974</latitude_deg>
+      <longitude_deg>8.546163739800146</longitude_deg>
+      <elevation>0</elevation>
+    </spherical_coordinates>
+  </world>
+</sdf>
